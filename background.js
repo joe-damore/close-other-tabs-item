@@ -14,15 +14,15 @@ const updateItemStatus = async function updateItemStatus() {
 };
 
 /**
- * Closes all tabs in `all`, except for the tab whose index matches `current`.
+ * Closes all tabs in `all`, except for the tab whose index matches `selected`.
  *
- * @param {Object} current - Active tab.
+ * @param {Object} selected - Tab from which context menu was opened.
  * @param {Object[]} all - All tabs in current window.
  */
-const closeTabs = function closeTabs(current, all) {
+const closeTabs = function closeTabs(selected, all) {
   const removedTabIDs = all
     .filter((tab) => {
-      return tab.index != current.index;
+      return tab.index != selected.index;
     })
     .filter((tab) => {
       return !tab.pinned;
@@ -56,6 +56,9 @@ browser.tabs.onMoved.addListener(() => {
 
 /**
  * Calls "closeTabs" if the "close_other" context menu item is clicked.
+ *
+ * @param {Object} info - Clicked menu item info.
+ * @param {Object} tab - Tab that was clicked.
  */
 browser.contextMenus.onClicked.addListener(async (info, tab) => {
   if (info.menuItemId === "close_other") {
