@@ -1,0 +1,14 @@
+{
+  "manifest_version": 2,
+  "name": "Close Other Tabs Item",
+  "description": "Adds a 'Close Other Tabs' item in the tab context menu",
+  "homepage_url": "https://github.com/joe-damore/close-other-tabs-item",
+  "version": "1.0.0",
+  "background": {
+    "scripts": ["background.js"]
+  },
+  "permissions": [
+    "contextMenus",
+    "tabs"
+  ]
+}
