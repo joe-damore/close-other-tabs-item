@@ -11,6 +11,8 @@ const updateItemStatus = async function updateItemStatus() {
   browser.contextMenus.update("close_other", {
     enabled,
   });
+
+  browser.contextMenus.refresh();
 };
 
 /**
@@ -44,14 +46,9 @@ const item = browser.contextMenus.create({
   }
 });
 
-// Recalculate "Close Other Tabs" item status when tabs update.
-browser.tabs.onUpdated.addListener(() => {
-  updateItemStatus();
-});
-
-// Recalculate "Close Other Tabs" item status when tabs move.
-browser.tabs.onMoved.addListener(() => {
-  updateItemStatus();
+// Recalculate "Close Other Tabs" item status when context menu is shown.
+browser.contextMenus.onShown.addListener(async (info, tab) => {
+  updateItemStatus(tab);
 });
 
 /**
