@@ -34,10 +34,9 @@ const closeTabs = function closeTabs(current, all) {
   browser.tabs.remove(removedTabIDs);
 };
 
-// TODO Internationalization.
 const item = browser.contextMenus.create({
   id: "close_other",
-  title: "Cl&ose Other Tabs",
+  title: browser.i18n.getMessage("menuItemTitle"),
   contexts: ["tab"],
 }, () => {
   if (browser.runtime.lastError) {

@@ -1,0 +1,14 @@
+{
+  "extensionName": {
+    "message": "Close Other Tabs Item",
+    "description": "Extension name"
+  },
+  "extensionDescription": {
+    "message": "Adds a 'Close Other Tabs' item in the tab context menu",
+    "description": "Extension description"
+  },
+  "menuItemTitle": {
+    "message": "Cl&ose Other Tabs",
+    "description": "Context menu item title"
+  }
+}

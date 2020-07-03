@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
-  "name": "Close Other Tabs Item",
-  "description": "Adds a 'Close Other Tabs' item in the tab context menu",
+  "name": "__MSG_extensionName__",
+  "description": "__MSG_extensionDescription__",
   "homepage_url": "https://github.com/joe-damore/close-other-tabs-item",
   "version": "1.0.0",
   "background": {
@@ -10,5 +10,6 @@
   "permissions": [
     "contextMenus",
     "tabs"
-  ]
+  ],
+  "default_locale": "en"
 }
