@@ -1,5 +1,7 @@
 # Close Other Tabs Menu Item
 
+[![Add-Ons for Firefox | Close Other Tabs Menu Item v1.0.0](https://img.shields.io/badge/Firefox%20Add--Ons-v1.0.0-722291)](https://addons.mozilla.org/en-US/firefox/addon/close-other-tabs-item/)
+
 Firefox extension that adds a "Close Other Tabs" context menu item in Firefox v78+.
 
 ## Overview
@@ -10,7 +12,7 @@ Installing this extension will add a _Close Other Tabs_ menu item to the root of
 ## Usage
 Once this extension is installed and enabled, a _Close Other Tabs_ menu item will immediately be available when right-clicking on a tab.
 
-This menu item can be triggered using the `o` access key. This means that the _Close Other Tabs_ menu item can be invoked by right clicking a tab and pressing the `o` key on your keyboard, similar to versions of Firefox prior to v78.
+This menu item can be triggered using the `o` access key. This means that the _Close Other Tabs_ menu item can be invoked by right-clicking a tab and pressing the `o` key on your keyboard, similar to versions of Firefox prior to v78.
 
 Pinned tabs do not get closed when using this menu item.
 

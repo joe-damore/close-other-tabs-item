@@ -4,6 +4,11 @@
 const updateItemStatus = async function updateItemStatus() {
   let enabled = true;
   const allTabs = await browser.tabs.query({currentWindow: true});
+
+  /*
+   * TODO Improve logic so that "Close Other Tabs" item is disabled when all
+   * other tabs are pinned.
+   */
   if (allTabs.length <= 1) {
     enabled = false;
   }
