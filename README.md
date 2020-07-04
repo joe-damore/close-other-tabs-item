@@ -1,2 +1,2 @@
-# close-other-tabs-item
-Adds a "Close Other Tabs" tab context menu item in Firefox v78+
+# Close Other Tabs Menu Item
+Firefox extension that adds a "Close Other Tabs" tab context menu item in Firefox v78+.
