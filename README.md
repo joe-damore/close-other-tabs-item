@@ -12,7 +12,7 @@ Installing this extension will add a _Close Other Tabs_ menu item to the root of
 ## Usage
 Once this extension is installed and enabled, a _Close Other Tabs_ menu item will immediately be available when right-clicking on a tab.
 
-This menu item can be triggered using the `o` access key. This means that the _Close Other Tabs_ menu item can be invoked by right clicking a tab and pressing the `o` key on your keyboard, similar to versions of Firefox prior to v78.
+This menu item can be triggered using the `o` access key. This means that the _Close Other Tabs_ menu item can be invoked by right-clicking a tab and pressing the `o` key on your keyboard, similar to versions of Firefox prior to v78.
 
 Pinned tabs do not get closed when using this menu item.
 
