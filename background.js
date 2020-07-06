@@ -1,3 +1,4 @@
+// 'Close Other Tabs' context menu item unique ID.
 const MENU_ITEM_ID = "close_other";
 
 /**
