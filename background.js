@@ -1,3 +1,5 @@
+const MENU_ITEM_ID = "close_other";
+
 /**
  * Enables or disables the "Close Other Tabs" menu item according to tab state.
  */
@@ -13,7 +15,7 @@ const updateItemStatus = async function updateItemStatus() {
     enabled = false;
   }
 
-  browser.contextMenus.update("close_other", {
+  browser.contextMenus.update(MENU_ITEM_ID, {
     enabled,
   });
 
@@ -57,13 +59,13 @@ browser.contextMenus.onShown.addListener(async (info, tab) => {
 });
 
 /**
- * Calls "closeTabs" if the "close_other" context menu item is clicked.
+ * Calls "closeTabs" if the MENU_ITEM_ID context menu item is clicked.
  *
  * @param {Object} info - Clicked menu item info.
  * @param {Object} tab - Tab that was clicked.
  */
 browser.contextMenus.onClicked.addListener(async (info, tab) => {
-  if (info.menuItemId === "close_other") {
+  if (info.menuItemId === MENU_ITEM_ID) {
     const allTabs = await browser.tabs.query({currentWindow: true});
     closeTabs(tab, allTabs);
   }
