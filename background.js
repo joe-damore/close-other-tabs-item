@@ -1,19 +1,35 @@
+// 'Close Other Tabs' context menu item unique ID.
+const MENU_ITEM_ID = "close_other";
+
 /**
  * Enables or disables the "Close Other Tabs" menu item according to tab state.
+ *
+ * @param {object} selectedTab - Tab from which context menu was opened.
  */
-const updateItemStatus = async function updateItemStatus() {
-  let enabled = true;
-  const allTabs = await browser.tabs.query({currentWindow: true});
+const updateItemStatus = async function updateItemStatus(selectedTab) {
+  // Get all tabs that are not pinned.
+  const allOtherTabs = (await browser.tabs.query({currentWindow: true}))
+    .filter((tab) => {
+      return (tab.id !== selectedTab.id);
+    })
+    .filter((tab) => {
+      return !tab.pinned;
+    });
 
   /*
-   * TODO Improve logic so that "Close Other Tabs" item is disabled when all
-   * other tabs are pinned.
+   * If the length of `allOtherTabs` is greater than 0, then there is at least
+   * one other closable tab present, and therefore this menu item should
+   * be enabled.
    */
-  if (allTabs.length <= 1) {
-    enabled = false;
-  }
+  const enabled = (() => {
+    if (allOtherTabs.length > 0) {
+      return true;
+    }
+    return false;
+  })();
 
-  browser.contextMenus.update("close_other", {
+  // Update context menu.
+  browser.contextMenus.update(MENU_ITEM_ID, {
     enabled,
   });
 
@@ -21,15 +37,15 @@ const updateItemStatus = async function updateItemStatus() {
 };
 
 /**
- * Closes all tabs in `all`, except for the tab whose index matches `selected`.
+ * Closes all tabs in `allTabs` except for `selectedTab`.
  *
- * @param {Object} selected - Tab from which context menu was opened.
- * @param {Object[]} all - All tabs in current window.
+ * @param {Object} selectedTab - Tab from which context menu was opened.
+ * @param {Object[]} allTabs - All tabs in current window.
  */
-const closeTabs = function closeTabs(selected, all) {
-  const removedTabIDs = all
+const closeTabs = function closeTabs(selectedTab, allTabs) {
+  const removedTabIDs = allTabs
     .filter((tab) => {
-      return tab.index != selected.index;
+      return tab.index != selectedTab.index;
     })
     .filter((tab) => {
       return !tab.pinned;
@@ -57,13 +73,13 @@ browser.contextMenus.onShown.addListener(async (info, tab) => {
 });
 
 /**
- * Calls "closeTabs" if the "close_other" context menu item is clicked.
+ * Calls "closeTabs" if the MENU_ITEM_ID context menu item is clicked.
  *
  * @param {Object} info - Clicked menu item info.
  * @param {Object} tab - Tab that was clicked.
  */
 browser.contextMenus.onClicked.addListener(async (info, tab) => {
-  if (info.menuItemId === "close_other") {
+  if (info.menuItemId === MENU_ITEM_ID) {
     const allTabs = await browser.tabs.query({currentWindow: true});
     closeTabs(tab, allTabs);
   }
