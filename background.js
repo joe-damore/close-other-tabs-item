@@ -2,19 +2,32 @@ const MENU_ITEM_ID = "close_other";
 
 /**
  * Enables or disables the "Close Other Tabs" menu item according to tab state.
+ *
+ * @param {object} currentTab - Tab from which context menu was opened.
  */
-const updateItemStatus = async function updateItemStatus() {
-  let enabled = true;
-  const allTabs = await browser.tabs.query({currentWindow: true});
+const updateItemStatus = async function updateItemStatus(currentTab) {
+  // Get all tabs that are not pinned.
+  const allOtherTabs = (await browser.tabs.query({currentWindow: true}))
+    .filter((tab) => {
+      return (tab.id !== currentTab.id);
+    })
+    .filter((tab) => {
+      return !tab.pinned;
+    });
 
   /*
-   * TODO Improve logic so that "Close Other Tabs" item is disabled when all
-   * other tabs are pinned.
+   * If the length of `allOtherTabs` is greater than 0, then there is at least
+   * one other closable tab present, and therefore this menu item should
+   * be enabled.
    */
-  if (allTabs.length <= 1) {
-    enabled = false;
-  }
+  const enabled = (() => {
+    if (allOtherTabs.length > 0) {
+      return true;
+    }
+    return false;
+  })();
 
+  // Update context menu.
   browser.contextMenus.update(MENU_ITEM_ID, {
     enabled,
   });
