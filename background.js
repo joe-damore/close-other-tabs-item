@@ -4,13 +4,13 @@ const MENU_ITEM_ID = "close_other";
 /**
  * Enables or disables the "Close Other Tabs" menu item according to tab state.
  *
- * @param {object} currentTab - Tab from which context menu was opened.
+ * @param {object} selectedTab - Tab from which context menu was opened.
  */
-const updateItemStatus = async function updateItemStatus(currentTab) {
+const updateItemStatus = async function updateItemStatus(selectedTab) {
   // Get all tabs that are not pinned.
   const allOtherTabs = (await browser.tabs.query({currentWindow: true}))
     .filter((tab) => {
-      return (tab.id !== currentTab.id);
+      return (tab.id !== selectedTab.id);
     })
     .filter((tab) => {
       return !tab.pinned;
@@ -37,15 +37,15 @@ const updateItemStatus = async function updateItemStatus(currentTab) {
 };
 
 /**
- * Closes all tabs in `all`, except for the tab whose index matches `selected`.
+ * Closes all tabs in `allTabs` except for `selectedTab`.
  *
- * @param {Object} selected - Tab from which context menu was opened.
- * @param {Object[]} all - All tabs in current window.
+ * @param {Object} selectedTab - Tab from which context menu was opened.
+ * @param {Object[]} allTabs - All tabs in current window.
  */
-const closeTabs = function closeTabs(selected, all) {
-  const removedTabIDs = all
+const closeTabs = function closeTabs(selectedTab, allTabs) {
+  const removedTabIDs = allTabs
     .filter((tab) => {
-      return tab.index != selected.index;
+      return tab.index != selectedTab.index;
     })
     .filter((tab) => {
       return !tab.pinned;
