@@ -1,0 +1,14 @@
+{
+  "extensionName": {
+    "message": "Andere Tabs schließen Menüpunkt",
+    "description": "Extension name"
+  },
+  "extensionDescription": {
+    "message": "Fügt einen 'Andere Tabs schließen' Eintrag im Tab-Kontextmenü hinzu",
+    "description": "Extension description"
+  },
+  "menuItemTitle": {
+    "message": "&Andere Tabs schließen",
+    "description": "Context menu item title"
+  }
+}
