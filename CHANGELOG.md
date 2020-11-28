@@ -5,6 +5,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+## [1.0.2] - 2020-07-16
+### Added
+- German localization
+
 ## [1.0.1] - 2020-07-06
 ### Added
 - `CHANGELOG.md` to track changes and releases
@@ -16,4 +20,4 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ## [1.0.0] - 2020-07-03
 ### Added
 - _Close Other Tabs Item_ extension
-- English translations
+- English localization
