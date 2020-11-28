@@ -1,6 +1,6 @@
 # Close Other Tabs Menu Item
 
-[![Add-Ons for Firefox | Close Other Tabs Menu Item v1.0.2](https://img.shields.io/badge/Firefox%20Add--Ons-v1.0.2-722291)](https://addons.mozilla.org/en-US/firefox/addon/close-other-tabs-item/)
+[![Add-Ons for Firefox | Close Other Tabs Menu Item v1.0.3](https://img.shields.io/badge/Firefox%20Add--Ons-v1.0.3-722291)](https://addons.mozilla.org/en-US/firefox/addon/close-other-tabs-item/)
 
 Firefox extension that adds a "Close Other Tabs" context menu item in Firefox v78+.
 
