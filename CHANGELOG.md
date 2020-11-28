@@ -5,6 +5,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+## [1.0.3] - 2020-11-27
+### Added
+- Simplified Chinese localization
+
 ## [1.0.2] - 2020-07-16
 ### Added
 - German localization
